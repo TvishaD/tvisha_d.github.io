@@ -1,9 +1,28 @@
 ---
 title: "Tvisha Devavarapu"
-output: 
-  html_document:
-    toc: true
-    toc_float: true
-    theme: simplex
 ---
 
+Hello! I'm a 1st year MS-Biostatistics student at the [Columbia Mailman School of Public Health](https://www.publichealth.columbia.edu). In terms of my background, I'm a [UC San Diego](https://ucsd.edu) graduate with a B.S in human biology. Towards the end of my undergrad journey, I decided to switch tracks from core biology to a field that would encompass more data science and analysis. I'm working towards building up the appropriate quantitative skill-set with a greater health-oriented industrial perspective.
+
+**_Welcome to my world!_**  
+
+![](images/front_page.jpg) 
+
+## Who am I?
+
+_*"Hello! నమస్కారం! नमस्कार! Hola! 안녕하세요!"*_
+
+Few tidbits about me: 
+
+* I was born and brought up in Hyderabad, India. 
+* I can speak 3.5 languages comfortably (English, Telugu, Hindi and Korean (1/2)) and am currently trying my hand at picking up Spanish and Chinese :')
+* I've travelled in over 20 countries in the last 10 years. 
+
+Find my academic+professional information and resume [here](about.html).
+
+## FlexDashboard Code
+
+Link to the rmd - html output with 3 individual instacart graphs.
+
+## FlexDashboard 
+Link to the final html flexdashboard 

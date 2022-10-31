@@ -1,0 +1,18 @@
+name: "Tvisha Devavarapu: Welcome to my World!"
+output_dir: "."
+navbar:
+  title: "Home"
+  right:
+    - text: "About Me"
+      href: about.html
+    - icon: fa-envelope fa-lg
+      href: mailto:<td2749@cumc.columbia.edu>
+    - icon: fa-brands fa-linkedin
+      href: https://www.linkedin.com/in/tvisha-devavarapu/
+    - icon: fa-github fa-lg
+      href: https://github.com/TvishaD/
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: paper

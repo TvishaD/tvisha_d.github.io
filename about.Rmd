@@ -1,0 +1,50 @@
+---
+title: "About Me"
+output:
+  html_document
+---
+
+## Academic
+
+* **Graduate Education (present)**: Columbia University - Mailman School of Public Health
+  - Anticipated: May 2024
+  - Master of Science – Biostatistics: Public Health Data Science Track
+  - Relevant Courses (in progress): Data Science I, Biostatistical Methods I, Probability
+  
+* **Undergraduate Education**: University of California, San Diego 
+
+  - Graduated: June 2021
+  - Bachelor of Science – Human Biology | GPA: 3.89 – Magna Cum Laude Honors
+  - Relevant Courses: Bioinformatics, Introduction to Python, Principles of Data Science, Statistics, Genetics, Cell- Molecular-Cancer Biology, Molecular Basis/Human Disease
+  
+* **High School**: The Aga Khan Academy - Hyderabad, India. 
+  
+  - Graduated: May 2018
+  - Scored 42/45 in the International Baccalaureate Diploma Programme (IBDP)
+
+## Professional 
+
+* **Onward Assist, Hyderabad, India**: *Product and Market Intern*
+  - May 2022 – August 2022 
+  - Compiled a 2 page technical review on existing AI and algorithmic methods in Head and Neck Cancer detection via digital pathology (WSI) modalities; used as support material for the machine learning team.
+  - Conducted extensive market research and LinkedIn outreach for identifying potential digital pathology clients for cancer detection data science firm; established 2 connections that led to further discussions.
+  - Discovered and initiated a new client-reaching opportunity by beginning the company’s on-boarding onto Science Exchange, a prominent online marketplace for R&D outsourcing.
+  
+* **DigiTele Networks – Greenko Group, Hyderabad, India**: *Data Science Intern*
+  - October 2021 – January 2022
+  - Introduced to deep learning and computer vision concepts and programs (Keras, PyTorch, OpenCV).
+  - Performed object detection/image processing/semantic segmentation using U-Net computational models.
+  
+* **O’Donoghue Lab – UCSD Skaggs School of Pharmacy, San Diego, CA**: *Research Assistant*
+  - November 2018 – January 2021
+  - Generated a biochemical profile of the fungal proteases that cause the disease Coccidioidomycosis.
+  - Accurately performed precise experimental procedures following correct protocols, including fluorescent kinetic assays, and proteomic procedures involving mass spectrometry to determine enzyme activity, substrate specificity, and inhibition scopes regarding the proteases.
+  
+## Skills
+
+* Technical: MS Word, Excel, and PowerPoint, R, Basic SQL, Python, Pandas, and NumPy. 
+* Language: Trilingual - English, Telugu, and Hindi. Conversational in Korean
+
+## Resume
+
+Here's the same information plus more on projects and leadership experiences collated into a PDF: [Tvisha's Resume](files/td_resume.pdf)
