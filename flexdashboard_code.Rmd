@@ -51,3 +51,26 @@ instacart_df %>%
           text = ~paste("Time: ", order_hour_of_day, "/24", '<br>Counts:', counts))
 ```
 
+#3 Top 5 items in Top 10 Aisles
+
+```{r Top 5 items in Top 10 Aisles - rank as factor ver.}
+aisle_counts = 
+  instacart_df %>% 
+    group_by(aisle) %>% 
+    count(aisle) %>%
+    arrange(desc(n))
+
+top_10_aisles = aisle_counts$aisle[1:10]
+
+instacart_df %>% 
+  filter(aisle %in% top_10_aisles) %>% 
+  group_by(aisle) %>% 
+  count(product_name) %>% 
+  mutate(rank = min_rank(desc(n))) %>% 
+  filter(rank < 6) %>% 
+  mutate(rank = factor(rank)) %>% 
+  arrange(aisle, rank) %>% 
+  plot_ly(x = ~aisle, y = ~n, type = "bar", color = ~rank,
+          text = ~paste("Name: ", product_name, '<br>Counts:', n))
+```
+
