@@ -1,0 +1,38 @@
+---
+title: "Flexdashboard Code"
+author: "Tvisha R. Devavarapu"
+date: "2022-10-31"
+output: html_document
+---
+
+# Set-up
+```{r}
+library(tidyverse)
+
+library(plotly)
+```
+
+```{r}
+library(p8105.datasets)
+data("instacart")
+
+instacart_df =
+  instacart %>%
+    janitor::clean_names()
+```
+
+
+#1 Most ordered fresh vegetables
+
+```{r Most ordered fresh veggies}
+instacart_df %>% 
+  select(product_name, aisle) %>% 
+  filter(aisle == "fresh vegetables") %>% 
+  group_by(product_name) %>% 
+  summarise(counts = n()) %>% 
+  filter(counts > 1000) %>% 
+  mutate(product_name = fct_reorder(product_name, counts)) %>% 
+  plot_ly(x = ~product_name, y = ~counts, type = "bar")
+  
+```
+
