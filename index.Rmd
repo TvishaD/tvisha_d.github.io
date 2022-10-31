@@ -22,7 +22,7 @@ Find my academic+professional information and resume [here](about.html).
 
 ## FlexDashboard Code
 
-Link to the rmd - html output with 3 individual instacart graphs.
+[Here](flexdashboard_code.html) is the code and the associated process followed in the creation of each individual plot on the flexdashboard. 
 
 ## FlexDashboard 
 Link to the final html flexdashboard 
