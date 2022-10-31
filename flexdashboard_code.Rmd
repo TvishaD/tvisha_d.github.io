@@ -36,3 +36,18 @@ instacart_df %>%
   
 ```
 
+#2 Time-wise trend in overall produce/snacks/personal-care orders
+
+```{r Time-wise trend in overall produce/snacks/personal-care orders}
+instacart_df %>% 
+  select(order_hour_of_day, department) %>% 
+  mutate(order_hour_of_day = factor(order_hour_of_day)) %>% 
+  filter(department %in% c("produce", "snacks", "personal care")) %>% 
+  group_by(order_hour_of_day, department) %>% 
+  summarise(counts = n()) %>% 
+  plot_ly(x = ~order_hour_of_day, y = ~counts,
+          type = "scatter", mode = "markers",
+          color = ~department, size = ~counts,
+          text = ~paste("Time: ", order_hour_of_day, "/24", '<br>Counts:', counts))
+```
+
