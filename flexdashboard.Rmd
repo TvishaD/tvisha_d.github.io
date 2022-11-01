@@ -1,0 +1,97 @@
+---
+title: "Instacart Flexdashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    source: embed
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(plotly)
+
+library(flexdashboard)
+```
+
+```{r}
+library(p8105.datasets)
+data("instacart")
+
+instacart_df =
+  instacart %>%
+    janitor::clean_names()
+```
+
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r Top 5 items in Top 10 Aisles (rank as factor)}
+aisle_counts = 
+  instacart_df %>% 
+    group_by(aisle) %>% 
+    count(aisle) %>%
+    arrange(desc(n))
+
+top_10_aisles = aisle_counts$aisle[1:10]
+
+instacart_df %>% 
+  filter(aisle %in% top_10_aisles) %>% 
+  group_by(aisle) %>% 
+  count(product_name) %>% 
+  mutate(rank = min_rank(desc(n))) %>% 
+  filter(rank < 6) %>% 
+  mutate(rank = factor(rank)) %>% 
+  arrange(aisle, rank) %>% 
+  plot_ly(x = ~aisle, y = ~n, type = "bar", color = ~rank,
+          text = ~paste("Name: ", product_name, '<br>Counts:', n)) %>% 
+    layout(title = "<b>Top 5 items in Top 10 Aisles</b>",
+           yaxis = list(title = "<b># of orders</b>"),
+           xaxis = list(title = "<b>Aisle</b>", tickangle = 45),
+           legend = list(title = list(text = "<b>Rank</b>")))
+```
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r Time-wise trend in overall produce/snacks/personal-care orders}
+instacart_df %>% 
+  select(order_hour_of_day, department) %>% 
+  mutate(order_hour_of_day = factor(order_hour_of_day)) %>% 
+  filter(department %in% c("produce", "snacks", "personal care")) %>% 
+  group_by(order_hour_of_day, department) %>% 
+  summarise(counts = n()) %>% 
+  plot_ly(x = ~order_hour_of_day, y = ~counts,
+          type = "scatter", mode = "markers",
+          color = ~department, size = ~counts,
+          text = ~paste("Time: ", order_hour_of_day, "/24", '<br>Counts:', counts)) %>% 
+    layout(title = "<b>Time-wise trends in overall produce/snacks/personal-care orders</b>",
+           yaxis = list(title = "<b># of orders</b>"),
+           xaxis = list(title = "<b>Time of Day</b>",
+                        tickvals = c(0, 3, 6, 9, 12, 15, 18, 21, 23),
+                        ticktext = c("12 AM", "3 AM", "6 AM", "9 AM", "12 PM",
+                                     "3 PM", "6 PM", "9 PM", "11 PM"),
+                        tickangle = 45))
+```
+
+### Chart C
+
+```{r Most ordered fresh veggies}
+instacart_df %>% 
+  select(product_name, aisle) %>% 
+  filter(aisle == "fresh vegetables") %>% 
+  group_by(product_name) %>% 
+  summarise(counts = n()) %>% 
+  filter(counts > 1000) %>% 
+  mutate(product_name = fct_reorder(product_name, counts)) %>% 
+  plot_ly(x = ~product_name, y = ~counts, type = "bar") %>% 
+    layout(title = "<b>Frequently ordered 'Fresh Vegetables' (counts > 1000)</b>",
+           yaxis = list(title = "<b># of orders</b>"),
+           xaxis = list(title = "<b>Product</b>", tickangle = 45))
+```
+

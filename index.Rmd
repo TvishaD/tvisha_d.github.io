@@ -20,9 +20,9 @@ Few tidbits about me:
 
 Find my academic+professional information and resume [here](about.html).
 
-## FlexDashboard Code
+## Flexdashboard Code
 
 [Here](flexdashboard_code.html) is the code and the associated process followed in the creation of each individual plot on the flexdashboard. 
 
-## FlexDashboard 
-Link to the final html flexdashboard 
+## Flexdashboard 
+[Here](flexdashboard.html) is the final flexdashboard based on the Instacart data. 
