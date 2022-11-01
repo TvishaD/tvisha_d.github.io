@@ -10,6 +10,12 @@ output: html_document
 library(tidyverse)
 
 library(plotly)
+
+knitr::opts_chunk$set(
+  fig.width = 10,
+  fig.asp = .6,
+  out.width = "90%"
+)
 ```
 
 ```{r}
@@ -22,7 +28,7 @@ instacart_df =
 ```
 
 
-#1 Most ordered fresh vegetables
+**1. Most ordered fresh vegetables**
 
 ```{r Most ordered fresh veggies}
 instacart_df %>% 
@@ -32,11 +38,16 @@ instacart_df %>%
   summarise(counts = n()) %>% 
   filter(counts > 1000) %>% 
   mutate(product_name = fct_reorder(product_name, counts)) %>% 
-  plot_ly(x = ~product_name, y = ~counts, type = "bar")
+  plot_ly(x = ~product_name, y = ~counts, type = "bar") %>% 
+    layout(title = "<b>Most frequently ordered products (counts > 1000) in the 'Fresh Vegetables' aisle</b>",
+           yaxis = list(title = "<b>Counts (# of orders)</b>"),
+           xaxis = list(title = "<b>Product</b>", tickangle = 45))
   
 ```
+*Customers on instacart seem to have a preference towards organic produce within the 'Fresh Vegetables' aisle.*
 
-#2 Time-wise trend in overall produce/snacks/personal-care orders
+
+**2. Time-wise trend in overall produce/snacks/personal-care orders**
 
 ```{r Time-wise trend in overall produce/snacks/personal-care orders}
 instacart_df %>% 
@@ -48,10 +59,19 @@ instacart_df %>%
   plot_ly(x = ~order_hour_of_day, y = ~counts,
           type = "scatter", mode = "markers",
           color = ~department, size = ~counts,
-          text = ~paste("Time: ", order_hour_of_day, "/24", '<br>Counts:', counts))
+          text = ~paste("Time: ", order_hour_of_day, "/24", '<br>Counts:', counts)) %>% 
+    layout(title = "<b>Time-wise trends in overall produce/snacks/personal-care orders</b>",
+           yaxis = list(title = "<b>Counts (# of orders)</b>"),
+           xaxis = list(title = "<b>Time of Day</b>",
+                        tickvals = c(0, 3, 6, 9, 12, 15, 18, 21, 23),
+                        ticktext = c("12 AM", "3 AM", "6 AM", "9 AM", "12 PM",
+                                     "3 PM", "6 PM", "9 PM", "11 PM"),
+                        tickangle = 45))
 ```
+*Produce is more frequently ordered than snacks and personal care. 10 AM - 2 PM seems to be time when most of the produce orders are made. For snacks, most products were ordered 11 AM and 2 PM but dipped a little in the time in between. For personal care products, just like snacks, the most likely time to order was 11 AM or 2 PM.*
 
-#3 Top 5 items in Top 10 Aisles
+
+**3. Top 5 items in Top 10 Aisles**
 
 ```{r Top 5 items in Top 10 Aisles - rank as factor ver.}
 aisle_counts = 
@@ -71,6 +91,10 @@ instacart_df %>%
   mutate(rank = factor(rank)) %>% 
   arrange(aisle, rank) %>% 
   plot_ly(x = ~aisle, y = ~n, type = "bar", color = ~rank,
-          text = ~paste("Name: ", product_name, '<br>Counts:', n))
+          text = ~paste("Name: ", product_name, '<br>Counts:', n)) %>% 
+    layout(title = "<b>Top 5 items in Top 10 Aisles</b>",
+           yaxis = list(title = "<b>Counts (# of orders)</b>"),
+           xaxis = list(title = "<b>Aisle</b>", tickangle = 45),
+           legend = list(title = list(text = "<b>Rank</b>")))
 ```
-
+*Note: Please hover over the individual bars to access the product names!*
